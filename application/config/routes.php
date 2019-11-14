@@ -49,10 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-// $route['EmpCreate']['post'] = "emp/store";
-// $route['EmpEdit/(:any)'] = "emp/edit/$1";
-// $route['EmpUpdate/(:any)']['put'] = "emp/update/$1";
-// $route['EmpDelete/(:any)']['delete'] = "emp/delete/$1";
+$route['CountryCreate']['get'] = "Area/create_country";
+$route['CountryAdd']['post'] = "Area/add_country";
+$route['CountryList']['get'] = "Area/list_country";
+$route['CountryEdit/(:any)'] = "Area/edit_country/$1";
+$route['CountryUpdate/(:any)']['put'] = "Area/update_country/$1";
+$route['CountryDelete/(:any)']['delete'] = "Area/delete_country/$1";
 $route['default_controller'] = 'User';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

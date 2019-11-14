@@ -151,7 +151,7 @@
                         <ul class="metismenu " id="sidebarNav">
                             <li class="nav-static-title">jobs</li>
                             <li class="active">
-                                <a class="has-arrow" href='index.html' aria-expanded="false">
+                                <a class="has-arrow" href='<?php echo base_url(); ?>Home' aria-expanded="false">
                                     <i class="nav-icon ti ti-rocket"></i>
                                     <span class="nav-title">Dashboards</span>
                                    <!--  <span class="nav-label label label-danger">9</span> -->
@@ -159,6 +159,39 @@
                                
                             </li>
                             
+
+                            <li>
+
+
+                                 
+
+
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"> <i class="nav-icon  ti ti-trello"></i> <span class="nav-title">Area Master</span> <!-- <span class="nav-label label label-success">New</span> --> </a>
+                                <ul aria-expanded="false">
+                                    <li class="scoop-hasmenu">
+                                        <a class="has-arrow" href="javascript: void(0);">Country</a>
+                                        <ul aria-expanded="false">
+                                            <li> <a href="<?php echo base_url(); ?>CountryCreate">Add new Country</a> </li>
+                                            <li> <a href="<?php echo base_url(); ?>CountryList">Country List</a> </li>
+                                        </ul>
+                                    </li>
+                                    <li class="scoop-hasmenu">
+                                        <a class="has-arrow" href="javascript: void(0);">State</a>
+                                        <ul aria-expanded="false">
+                                            <li> <a href="<?php echo base_url(); ?>CountryCreate">Add new State</a> </li>
+                                            <li> <a href="<?php echo base_url(); ?>CountryList">State List</a> </li>
+                                        </ul>
+                                    </li>
+                                    <li class="scoop-hasmenu">
+                                        <a class="has-arrow" href="javascript: void(0);">City</a>
+                                        <ul aria-expanded="false">
+                                            <li> <a href="<?php echo base_url(); ?>CountryCreate">Add new City</a> </li>
+                                            <li> <a href="<?php echo base_url(); ?>CountryList">City List</a> </li>
+                                        </ul>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
                            
                             <li>
                                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"> <i class="nav-icon  ti ti-user"></i> <span class="nav-title">Users</span> <!-- <span class="nav-label label label-success">New</span> --> </a>
