@@ -49,12 +49,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['CountryCreate']['get'] = "Area/create_country";
-$route['CountryAdd']['post'] = "Area/add_country";
+$route['CountryCreate'] = "Area/create_country";
+$route['CountryList/(:num)']['get'] = "Area/list_country/$1";
 $route['CountryList']['get'] = "Area/list_country";
-$route['CountryEdit/(:any)'] = "Area/edit_country/$1";
-$route['CountryUpdate/(:any)']['put'] = "Area/update_country/$1";
-$route['CountryDelete/(:any)']['delete'] = "Area/delete_country/$1";
+$route['CountryEdit/(:any)']= "Area/edit_country/$1";
+$route['CountryDelete/(:any)']= "Area/delete_country/$1";
+
+$route['StateCreate'] = "Area/create_state";
+$route['StateList/(:num)']['get'] = "Area/list_state/$1";
+$route['StateList']['get'] = "Area/list_state";
+$route['StateEdit/(:any)']= "Area/edit_state/$1";
+$route['StateDelete/(:any)']= "Area/delete_state/$1";
+
+$route['CityCreate'] = "Area/create_city";
+$route['CityList/(:num)']['get'] = "Area/list_city/$1";
+$route['CityList']['get'] = "Area/list_city";
+$route['CityEdit/(:any)']= "Area/edit_city/$1";
+$route['CityDelete/(:any)']= "Area/delete_city/$1";
+
+ $route['RJHome']= "Home/index";
+ $route['logout']= "User/logout";
+ $route['login']= "User/index";
+
+$route['CountryDelete/(:any)'] = "Area/delete_country/$1";
 $route['default_controller'] = 'User';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

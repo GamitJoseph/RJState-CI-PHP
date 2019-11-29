@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-    <title>RJ STATE | Admin</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
-    <meta name="author" content="Potenza Global Solutions" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- app favicon -->
+    <title>RJ STATE | <?php 
+    if (!empty($header_title)) {
+       echo $header_title;
+   } ?>
 
-    <link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/favicon.ico">
-    <!-- google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <!-- plugin stylesheets -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/vendors.css" />
-    <!-- app style -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css" />
+</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="description" content="Admin template that can be used to build dashboards for CRM, CMS, etc." />
+<meta name="author" content="Potenza Global Solutions" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<!-- app favicon -->
+
+<link rel="shortcut icon" href="<?php echo base_url(); ?>/assets/img/favicon.ico">
+<!-- google fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+<!-- plugin stylesheets -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/vendors.css" />
+<!-- app style -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/pagination.css" />
+
 </head>
 
 <body>
@@ -69,8 +74,8 @@
                                 </li>
                             </ul>
                             <ul class="navbar-nav nav-right ml-auto">
-                                
-                               
+
+
                                 <li class="nav-item">
                                     <a class="nav-link search" href="javascript:void(0)">
                                         <i class="ti ti-search"></i>
@@ -98,39 +103,47 @@
                                         <div class="bg-gradient px-4 py-3">
                                             <div class="d-flex align-items-center justify-content-between">
                                                 <div class="mr-1">
-                                                    <h4 class="text-white mb-0">Alice Williams</h4>
-                                                    <small class="text-white">Henry@example.com</small>
-                                                </div>
-                                                <a href="#" class="text-white font-20 tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout"> <i
-                                                                class="zmdi zmdi-power"></i></a>
-                                            </div>
+                                                    <h4 class="text-white mb-0">
+
+                                                        <?php 
+                                                        if (isset($this->session->userdata['logged_data'])) {
+                                                      
+                                                            echo $this->session->userdata['logged_data']['username'];
+                                                        
+                                                      }else{
+                                                       
+                                                        redirect(base_url("login"));
+                                                    }
+                                                    ?>
+                                                    
+                                                </h4>
+                                                <small class="text-white">
+                                                   <?php 
+                                                    if (isset($this->session->userdata['logged_data'])) {
+                                                      
+                                                            echo $this->session->userdata['logged_data']['email'];
+                                                        
+                                                      }else{
+                                                       
+                                                        redirect(base_url("login"));
+                                                    }
+                                                   ?>
+                                               </small>
+                                           </div>
+                                           <a href="<?php echo base_url('logout'); ?>" class="text-white font-20 tooltip-wrapper" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout"> <i
+                                            class="zmdi zmdi-power"></i></a>
                                         </div>
-                                        <div class="p-4">
-                                            <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
-                                                <i class="fa fa-user pr-2 text-success"></i> Profile</a>
+                                    </div>
+                                    <div class="p-4">
+                                        <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
+                                            <i class="fa fa-user pr-2 text-success"></i> Profile</a>
                                             <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
                                                 <i class="fa fa-envelope pr-2 text-primary"></i> Inbox
                                                 <span class="badge badge-primary ml-auto">6</span>
                                             </a>
-                                            <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
-                                                <i class=" ti ti-settings pr-2 text-info"></i> Settings
-                                            </a>
-                                            <a class="dropdown-item d-flex nav-link" href="javascript:void(0)">
-                                                <i class="fa fa-compass pr-2 text-warning"></i> Need help?</a>
-                                            <div class="row mt-2">
-                                                <div class="col">
-                                                    <a class="bg-light p-3 text-center d-block" href="#">
-                                                        <i class="fe fe-mail font-20 text-primary"></i>
-                                                        <span class="d-block font-13 mt-2">My messages</span>
-                                                    </a>
-                                                </div>
-                                                <div class="col">
-                                                    <a class="bg-light p-3 text-center d-block" href="#">
-                                                        <i class="fe fe-plus font-20 text-primary"></i>
-                                                        <span class="d-block font-13 mt-2">Compose new</span>
-                                                    </a>
-                                                </div>
-                                            </div>
+
+
+
                                         </div>
                                     </div>
                                 </li>
@@ -149,22 +162,18 @@
                     <!-- begin sidebar-nav -->
                     <div class="sidebar-nav scrollbar scroll_light">
                         <ul class="metismenu " id="sidebarNav">
-                            <li class="nav-static-title">jobs</li>
+                            <li class="nav-static-title">RJ STATE</li>
                             <li class="active">
                                 <a class="has-arrow" href='<?php echo base_url(); ?>Home' aria-expanded="false">
                                     <i class="nav-icon ti ti-rocket"></i>
                                     <span class="nav-title">Dashboards</span>
-                                   <!--  <span class="nav-label label label-danger">9</span> -->
+                                    <!--  <span class="nav-label label label-danger">9</span> -->
                                 </a>
-                               
+
                             </li>
-                            
+
 
                             <li>
-
-
-                                 
-
 
                                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"> <i class="nav-icon  ti ti-trello"></i> <span class="nav-title">Area Master</span> <!-- <span class="nav-label label label-success">New</span> --> </a>
                                 <ul aria-expanded="false">
@@ -178,21 +187,21 @@
                                     <li class="scoop-hasmenu">
                                         <a class="has-arrow" href="javascript: void(0);">State</a>
                                         <ul aria-expanded="false">
-                                            <li> <a href="<?php echo base_url(); ?>CountryCreate">Add new State</a> </li>
-                                            <li> <a href="<?php echo base_url(); ?>CountryList">State List</a> </li>
+                                            <li> <a href="<?php echo base_url(); ?>StateCreate">Add new State</a> </li>
+                                            <li> <a href="<?php echo base_url(); ?>StateList">State List</a> </li>
                                         </ul>
                                     </li>
                                     <li class="scoop-hasmenu">
                                         <a class="has-arrow" href="javascript: void(0);">City</a>
                                         <ul aria-expanded="false">
-                                            <li> <a href="<?php echo base_url(); ?>CountryCreate">Add new City</a> </li>
-                                            <li> <a href="<?php echo base_url(); ?>CountryList">City List</a> </li>
+                                            <li> <a href="<?php echo base_url(); ?>CityCreate">Add new City</a> </li>
+                                            <li> <a href="<?php echo base_url(); ?>CityList">City List</a> </li>
                                         </ul>
                                     </li>
-                                    
+
                                 </ul>
                             </li>
-                           
+
                             <li>
                                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"> <i class="nav-icon  ti ti-user"></i> <span class="nav-title">Users</span> <!-- <span class="nav-label label label-success">New</span> --> </a>
                                 <ul aria-expanded="false">
@@ -204,7 +213,7 @@
 
                                 </ul>
                             </li>
-                      
+
                         </ul>
                     </div>
                     <!-- end sidebar-nav -->
