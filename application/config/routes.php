@@ -49,6 +49,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+
+//admin
 $route['CountryCreate'] = "Area/create_country";
 $route['CountryList/(:num)']['get'] = "Area/list_country/$1";
 $route['CountryList']['get'] = "Area/list_country";
@@ -63,15 +65,25 @@ $route['StateDelete/(:any)']= "Area/delete_state/$1";
 
 $route['CityCreate'] = "Area/create_city";
 $route['CityList/(:num)']['get'] = "Area/list_city/$1";
+
 $route['CityList']['get'] = "Area/list_city";
 $route['CityEdit/(:any)']= "Area/edit_city/$1";
 $route['CityDelete/(:any)']= "Area/delete_city/$1";
 
+
+$route['Customers']['get'] = "user/get_customers";
+$route['Sellers']['get'] = "user/get_sellers";
+$route['Property']['get'] = "Admin_property/index";
+//seller
  $route['RJHome']= "Home/index";
+ $route['RJSellerHome']= "Seller/index";
+ $route['seller_register']= "User/registerseller";
+//commen
  $route['logout']= "User/logout";
  $route['login']= "User/index";
 
-$route['CountryDelete/(:any)'] = "Area/delete_country/$1";
+
+
 $route['default_controller'] = 'User';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

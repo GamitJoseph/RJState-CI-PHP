@@ -205,11 +205,11 @@
                             <li>
                                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"> <i class="nav-icon  ti ti-user"></i> <span class="nav-title">Users</span> <!-- <span class="nav-label label label-success">New</span> --> </a>
                                 <ul aria-expanded="false">
-                                    <li> <a href="widget-chart.html">Customers</a> </li>
+                                    <li> <a href="<?php echo base_url('Customers'); ?>">Customers</a> </li>
 
-                                    <li> <a href="widget-list.html">Agents</a> </li>
+                                    <li> <a href="widget-list.html">Seller</a> </li>
 
-                                    <li> <a href="widget-social.html">Property Owners</a> </li>
+                                   
 
                                 </ul>
                             </li>

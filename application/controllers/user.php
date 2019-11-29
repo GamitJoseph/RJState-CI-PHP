@@ -10,8 +10,20 @@ class user extends CI_Controller {
 	}
 	public function index()
 	{
+		if (isset($this->session->userdata['logged_data'])) {
 
-		$this->load->view('login.php');
+			if ($this->session->userdata['logged_data']['type']==1) {
+				redirect(base_url('RJHome'));
+			}elseif ($this->session->userdata['logged_data']['type']==2) {
+				redirect(base_url('RJSellerHome'));
+			}else{
+				$this->load->view('login.php');
+			}
+			
+		}else{
+			$this->load->view('login.php');
+		}
+		
 	}
 	public function login()
 	{
@@ -25,8 +37,17 @@ class user extends CI_Controller {
 		}
 		else
 		{	
+		// print_r($this->session->userdata['logged_data']);
 
-			redirect(base_url('RJHome'));
+			if ($this->session->userdata['logged_data']['type']==1) {
+				redirect(base_url('RJHome'));
+			}elseif ($this->session->userdata['logged_data']['type']==2) {
+				redirect(base_url('RJSellerHome'));
+			}else{
+				$this->load->view('login.php');
+			}
+
+
 			
 		}
 		
@@ -48,7 +69,8 @@ class user extends CI_Controller {
 				$sess_array = array(
 					'uid' => $row->user_id,
 					'username' => $row->username,
-					'email'=>$row->email
+					'email'=>$row->email,
+					'type'=>$row->user_type
 				);
 				$this->session->set_userdata('logged_data', $sess_array);
 			}
@@ -63,19 +85,13 @@ class user extends CI_Controller {
 	}
 
 
-function logout()
-{
-    $sess_array = array(
-                'uid'  =>'',
-                'username' => '',
-                'email' => '',
-               );
+	function logout()
+	{
+    // $this->session->unset_userdata($sess_array);
+		$this->session->sess_destroy();
 
-     $this->session->unset_userdata($sess_array);
-     $this->session->sess_destroy();
-
-     redirect(base_url('login'));
-}
+		redirect(base_url('login'));
+	}
 
 
 
@@ -95,7 +111,7 @@ function logout()
 			$indata['country']=$this->input->post('country');
 			$indata['address']=$this->input->post('addr');
 			$indata['reg_date']=date("y-m-d"); ;
-			$indata['user_type']=1;
+			$indata['user_type']="seller";
 			$indata['photo']=$this->do_upload();
 
 			$this->load->model('user_model');
@@ -162,6 +178,99 @@ function logout()
 		   // print_r($data);
 			$this->load->view('ctemplist',$data);
 		}
+
+	}
+
+
+function load_view($data = array(),$title,$view){
+		$data['header_title']=$title;
+		$this->load->view('layouts/header',$data);
+		$this->load->view($view,$data);
+		$this->load->view('layouts/footer');
+	}
+	function get_customers()
+	{
+		// Get rows count
+		
+		$conditions['returnType']    = 'count';
+		$rowsCount = $this->user_model->getUsers($conditions);
+
+			// Pagination config
+		$config['base_url']    = base_url() . '/Customers/';
+		$config['uri_segment'] = 2;
+		$config['total_rows']  = $rowsCount;
+		$config['per_page']    = 5;
+
+
+
+		$config['full_tag_open'] = '<ul class="paginationjp modal-1">';
+		$config['full_tag_close'] = '</ul>';
+		$config['num_tag_open'] = '<li >';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li ><a class="active">';
+		$config['cur_tag_close'] = '</a></li>';
+		$this->pagination->initialize($config);
+
+
+		$page = $this->uri->segment(2);
+		$offset = !$page ? 0 : $page;
+		echo $page;
+		echo "string";
+
+			// Get rows
+			//$data['pg']=$page;
+		$conditions['returnType'] = '';
+		$conditions['start'] = $offset;
+		$conditions['limit'] = $config['per_page'];
+		$conditions['conditions'] = array('user_type' => 3 );
+
+		$data['datalst']=$this->user_model->getUsers($conditions);
+		
+	$this->load_view($data,"Country List","Admin/users/customer_list");
+
+	}
+
+
+	function get_sellers()
+	{
+		// Get rows count
+		
+		$conditions['returnType']    = 'count';
+		$rowsCount = $this->user_model->getUsers($conditions);
+
+			// Pagination config
+		$config['base_url']    = base_url() . '/Sellers/';
+		$config['uri_segment'] = 2;
+		$config['total_rows']  = $rowsCount;
+		$config['per_page']    = 5;
+
+
+
+		$config['full_tag_open'] = '<ul class="paginationjp modal-1">';
+		$config['full_tag_close'] = '</ul>';
+		$config['num_tag_open'] = '<li >';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li ><a class="active">';
+		$config['cur_tag_close'] = '</a></li>';
+		$this->pagination->initialize($config);
+
+
+		$page = $this->uri->segment(2);
+		$offset = !$page ? 0 : $page;
+		echo $page;
+		echo "string";
+
+			// Get rows
+			//$data['pg']=$page;
+		$conditions['returnType'] = '';
+		$conditions['start'] = $offset;
+		$conditions['limit'] = $config['per_page'];
+		$conditions['conditions'] = array('user_type' => 2 );
+
+		$data['datalst']=$this->user_model->getUsers($conditions);
+		
+		//print_r($data);
+		$this->load_view($data,"Country List","Admin/users/customer_list");
 
 	}
 	
