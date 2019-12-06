@@ -18,6 +18,7 @@
 								</li>
 								<li class="breadcrumb-item">
 									Customers
+									
 								</li>
 								<li class="breadcrumb-item active text-primary" aria-current="page">List</li>
 							</ol>
@@ -27,293 +28,96 @@
 				<!-- end page title -->
 			</div>
 		</div>
-		<!-- end row -->
-		<!-- start-clients contant-->
+
+		<!-- start row -->
+
 		<div class="row">
-			<div class="col-12">
-				<div class="card card-statistics clients-contant">
-					<div class="card-header">
-						<div class="d-xxs-flex justify-content-between align-items-center">
-							<div class="card-heading">
-								<h4 class="card-title">Clients</h4>
+			<?php 
+
+			foreach ($datalst as $d) :
+				?>
+				<div class="col-xxl-3 col-xl-4  col-sm-6">
+					<div class="card card-statistics contact-contant">
+						<div class="card-body py-4">
+							<div class="d-flex align-items-center">
+								<div class="bg-img">
+									
+									<img src="<?php echo base_url(); ?>/assets/uploads/users/<?php echo $d['photo']; ?>" alt="" class="img-fluid">
+								</div>
+								<div class="ml-3">
+									<h4 class="mb-0">
+										
+										<?php 
+										echo $d['firstname'];
+										echo "&nbsp;";
+										echo $d['middlename'];
+										echo "&nbsp;";
+										echo $d['lastname'];
+
+										?>
+									</h4>
+									<p><span class="badge badge-warning-inverse px-2 py-1 mt-1">Customer</span></p>
+								</div>
 							</div>
-							<div class="mt-xxs-0 mt-3 btn-group btn-group-toggle" data-toggle="buttons">
-								<label class="btn btn-sm btn-round  btn-primary">
-									<input type="radio" name="options" id="option1" checked="">
-									Today
-								</label>
-								<label class="btn btn-sm btn-outline-primary">
-									<input type="radio" name="options" id="option2">
-									Week
-								</label>
-								<label class="btn btn-sm btn-round btn-outline-primary">
-									<input type="radio" name="options" id="option3"> Month
-								</label>
+							<div>
+								<ul class="nav">
+									<li class="nav-item">
+										<div class="img-icon"><i class="fa fa-mobile"></i></div>
+									</li>
+									<li class="nav-item">
+										<p><?php echo $d['phone']; ?></p>
+									</li>
+								</ul>
+								
+								<ul class="nav">
+									<li class="nav-item">
+										<div class="img-icon"><i class="fa fa-envelope-o"></i></div>
+									</li>
+									<li class="nav-item">
+										<p><?php echo $d['email']; ?></p>
+									</li>
+								</ul>
+								<ul class="nav">
+									<li class="nav-item">
+										<div class="img-icon"><i class="fa fa-location-arrow"></i></div>
+									</li>
+									<li class="nav-item">
+										<p><?php echo $d['state_name']; 
+										?></p>
+									</li>
+									
+
+								</ul>
+								
+							</div>
+								
+							<div class="ml-3 mt-20">
+							<a href="<?php echo base_url('/Customer_full/'. $d['user_id']); ?>" class="btn btn-round btn-inverse-info">View more</a>
 							</div>
 						</div>
 					</div>
-					<div class="card-body py-0 table-responsive">
-						<table class="table clients-contant-table mb-0">
-							<thead>
-								<tr>
-									<th scope="col">Clients</th>
-									<th scope="col">Transaction date</th>
-									<th scope="col">Amount</th>
-									<th scope="col">Status</th>
-									<th scope="col">Edit & Delete</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/01.jpg" class="img-fluid" alt="Clients-01">
-											</div>
-											<p class="font-weight-bold">Adrian Demiandro</p>
-										</div>
-									</td>
-									<td>20/07/2018</td>
-									<td>$230.00</td>
-									<td><a href="javascript:void(0)" class="dot"></a><span>Paid</span></td>
-									<td>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0 "><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/02.jpg" class="img-fluid" alt="Clients-02">
-											</div>
-											<p class="font-weight-bold">Jenny Smithdro</p>
-										</div>
-									</td>
-									<td>25/08/2018</td>
-									<td>$330.00</td>
-									<td><a href="javascript:void(0)" class="dot bg-primary"></a><span>Unpaid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/03.jpg" class="img-fluid" alt="Clients-03">
-											</div>
-											<p class="font-weight-bold">Brian Joedro</p>
-										</div>
-									</td>
-									<td>01/09/2018</td>
-									<td>$500.00</td>
-									<td><a href="javascript:void(0)" class="dot bg-primary"></a><span>Unpaid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/04.jpg" class="img-fluid" alt="Clients-04">
-											</div>
-											<p class="font-weight-bold">Sandradro Garett</p>
-										</div>
-									</td>
-									<td>03/08/2018</td>
-									<td>$130.00</td>
-									<td><a href="javascript:void(0)" class="dot"></a><span>Paid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/05.jpg" class="img-fluid" alt="Clients-05">
-											</div>
-											<p class="font-weight-bold">Garydro</p>
-										</div>
-									</td>
-									<td>15/08/2018</td>
-									<td>$35.00</td>
-									<td><a href="javascript:void(0)" class="dot bg-danger"></a><span>Canceled</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round disabled mr-2"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round disabled"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/06.jpg" class="img-fluid" alt="Clients-06">
-											</div>
-											<p class="font-weight-bold">Andrew dro</p>
-										</div>
-									</td>
-									<td>20/07/2018</td>
-									<td>$230.00</td>
-									<td><a href="javascript:void(0)" class="dot"></a><span>Paid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/07.jpg" class="img-fluid" alt="Clients-07">
-											</div>
-											<p class="font-weight-bold">Stonedro</p>
-										</div>
-									</td>
-									<td>25/08/2018</td>
-									<td>$330.00</td>
-									<td><a href="javascript:void(0)" class="dot bg-primary"></a><span>Unpaid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/08.jpg" class="img-fluid" alt="Clients-08">
-											</div>
-											<p class="font-weight-bold">Jimmy dron</p>
-										</div>
-									</td>
-									<td>01/09/2018</td>
-									<td>$500.00</td>
-									<td><a href="javascript:void(0)" class="dot bg-primary"></a><span>Unpaid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/09.jpg" class="img-fluid" alt="Clients-09">
-											</div>
-											<p class="font-weight-bold">Richard dro</p>
-										</div>
-									</td>
-									<td>03/08/2018</td>
-									<td>$130.00</td>
-									<td><a href="javascript:void(0)" class="dot"></a><span>Paid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/01.jpg" class="img-fluid" alt="Clients-01">
-											</div>
-											<p class="font-weight-bold">Garettnice</p>
-										</div>
-									</td>
-									<td>15/08/2018</td>
-									<td>$35.00</td>
-									<td><a href="javascript:void(0)" class="dot bg-danger"></a><span>Canceled</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round disabled mr-2"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round disabled"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/02.jpg" class="img-fluid" alt="Clients-02">
-											</div>
-											<p class="font-weight-bold">Adriannyt</p>
-										</div>
-									</td>
-									<td>20/07/2018</td>
-									<td>$230.00</td>
-									<td><a href="javascript:void(0)" class="dot"></a><span>Paid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/03.jpg" class="img-fluid" alt="Clients-03">
-											</div>
-											<p class="font-weight-bold">Michaelbrt</p>
-										</div>
-									</td>
-									<td>25/08/2018</td>
-									<td>$330.00</td>
-									<td><a href="javascript:void(0)" class="dot bg-primary"></a><span>Unpaid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/04.jpg" class="img-fluid" alt="Clients-04">
-											</div>
-											<p class="font-weight-bold">Andrewwer</p>
-										</div>
-									</td>
-									<td>01/09/2018</td>
-									<td>$500.00</td>
-									<td><a href="javascript:void(0)" class="dot bg-primary"></a><span>Unpaid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/05.jpg" class="img-fluid" alt="Clients-05">
-											</div>
-											<p class="font-weight-bold">Braincdt</p>
-										</div>
-									</td>
-									<td>03/08/2018</td>
-									<td>$130.00</td>
-									<td><a href="javascript:void(0)" class="dot"></a><span>Paid</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round mr-2 mb-2 mb-sm-0"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										<div class="d-flex align-items-center">
-											<div class="bg-img mr-4">
-												<img src="assets/img/avtar/06.jpg" class="img-fluid" alt="Clients-06">
-											</div>
-											<p class="font-weight-bold">Sandrapot</p>
-										</div>
-									</td>
-									<td>15/08/2018</td>
-									<td>$35.00</td>
-									<td><a href="javascript:void(0)" class="dot bg-danger"></a><span>Canceled</span></td>
-									<td><a href="javascript:void(0)" class="btn btn-icon btn-outline-primary btn-round disabled mr-2"><i class="ti ti-pencil"></i></a>
-										<a href="javascript:void(0)" class="btn btn-icon btn-outline-danger btn-round disabled"><i class="ti ti-close"></i></a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
 				</div>
+
+
+			<?php endforeach;
+			
+
+			?>
+
+
+		</div>
+		<!-- end row -->
+		<div class="row">
+			<div class="col-md-12 m-b-30">
+				<!-- begin page title -->
+				<div class="d-block d-sm-flex flex-nowrap align-items-center">
+
+				<?php echo  $this->pagination->create_links();  ?>
 			</div>
 		</div>
-		<!-- end-clients contant-->
+	</div>
 	</div>
 	<!-- end container-fluid -->
+	
 </div>
 <!-- end app-main -->
-</div>

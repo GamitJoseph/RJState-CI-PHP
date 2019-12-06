@@ -17,7 +17,12 @@
             $query=$this->db->query("select * from rj_pmain_detail where main_detail_id='$id'");
             return $query->result();
         }
+        public function      getAllTypes(){
+           $qry= $this->db->get('rj_property_type');
+            return $qry->result();
+        }
 
     }   
+
 
 ?>

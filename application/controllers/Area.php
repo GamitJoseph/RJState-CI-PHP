@@ -5,6 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Area extends CI_Controller {
 	
+
+	
 	function __construct()
 	{
 		parent::__construct();
@@ -99,7 +101,10 @@ class Area extends CI_Controller {
 				}
 				
 			}
-		}else{
+		}elseif ($this->input->post('formCancel')) {
+			redirect("CountryList");
+		}
+		else{
 			$this->load_view($data,"Country Create","Admin/Area/create_country");
 		}
 
@@ -143,9 +148,11 @@ class Area extends CI_Controller {
 				}
 				
 			}
+		}elseif ($this->input->post('formCancel')) {
+			redirect("CountryList");
 		}
 		$data['member'] = $memData;
-		$this->load_view($data,"Country Create","Admin/Area/edit_country");
+		$this->load_view($data,"Country Update","Admin/Area/edit_country");
 	}
 	
 	public function delete_country($id)
@@ -216,9 +223,11 @@ class Area extends CI_Controller {
 				}
 				
 			}
+		}elseif ($this->input->post('formCancel')) {
+			redirect("StateList");
 		}else{
 			
-			$this->load_view($data,"Country Create","Admin/Area/create_state");
+			$this->load_view($data,"State Create","Admin/Area/create_state");
 		}
 
 		
@@ -262,7 +271,7 @@ class Area extends CI_Controller {
 
 		$data['datalst']=$this->area_model->getState($conditions);
 		
-		$this->load_view($data,"Country List","Admin/Area/list_state");
+		$this->load_view($data,"State List","Admin/Area/list_state");
 		
 	}
 
@@ -322,6 +331,8 @@ class Area extends CI_Controller {
 				}
 				
 			}
+		}elseif ($this->input->post('formCancel')) {
+			redirect("StateList");
 		}
 		$data['member'] = $memData;
 		$this->load_view($data,"State Update","Admin/Area/edit_state");
@@ -362,6 +373,8 @@ class Area extends CI_Controller {
 				}
 				
 			}
+		}elseif ($this->input->post('formCancel')) {
+			redirect("CityList");
 		}else{
 			
 			$this->load_view($data,"City Create","Admin/Area/create_city");
@@ -468,6 +481,8 @@ class Area extends CI_Controller {
 				}
 				
 			}
+		}elseif ($this->input->post('formCancel')) {
+			redirect("CityList");
 		}
 		$data['member'] = $memData;
 		$this->load_view($data,"City Update","Admin/Area/edit_city");

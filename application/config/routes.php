@@ -70,17 +70,56 @@ $route['CityList']['get'] = "Area/list_city";
 $route['CityEdit/(:any)']= "Area/edit_city/$1";
 $route['CityDelete/(:any)']= "Area/delete_city/$1";
 
+$route['InquiryList']['get'] = "Customer/list_city";
+$route['VisitList']['get'] = "Customer/list_city";
+
 
 $route['Customers']['get'] = "user/get_customers";
+$route['Customers/(:any)']['get'] = "user/get_customers/$1";
+$route['Customer_full/(:any)']['get'] = "user/full_customer/$1";
 $route['Sellers']['get'] = "user/get_sellers";
-$route['Property']['get'] = "Admin_property/index";
+$route['Sellers/(:any)']['get'] = "user/get_sellers/$1";
+$route['Seller_full/(:any)']['get'] = "user/full_seller/$1";
+
+$route['Admin_Properties']['get'] = "Properties/index";
+$route['Admin_Properties/(:any)']['get'] = "Properties/index/$1";
+$route['Admin_moreDetail/(:any)']['get'] = "Properties/moreDetail/$1";
+
+
+$route['is_verify_seller/(:any)/(:any)']['get'] = "user/verify_seller/$1/$2";
+$route['is_verify_cust/(:any)/(:any)']['get'] = "user/verify_cust/$1/$2";
+
+
 //seller
  $route['RJHome']= "Home/index";
  $route['RJSellerHome']= "Seller/index";
+ $route['add_Properties']= "Seller/addprop";
+ $route['list_Properties']= "Seller/index";
+ $route['moreDetail/(:any)']['get'] = "Seller/moreDetail/$1";
  $route['seller_register']= "User/registerseller";
 //commen
+
  $route['logout']= "User/logout";
  $route['login']= "User/index";
+ //GamitJoseph-Raivat
+//api http://localhost/RJstate/api/Customer/users
+ //api/get_user/user1574573622
+ // $route['api/get_user/(:any)']= "api/Customer/userby_id/$1";
+ // $route['api/get_user']= "api/Customer/userby_id/";
+ // $route['api/reg_user']['post']= "api/Customer/user_register/";
+  
+
+
+ //apis
+  $route['api/login']['get']= "api/Customer/user_login";
+  $route['api/register']['get']= "api/Customer/user_reg";
+  $route['api/update_user/(:any)']['get']= "api/Customer/user_update/$1";
+
+  $route['api/countries']['get']= "api/Area/countries";
+  $route['api/states/(:any)']['get']= "api/Area/States/$1";
+  $route['api/states']['get']= "api/Area/States";
+  $route['api/cities/(:any)']['get']= "api/Area/Cities/$1";
+  $route['api/cities']['get']= "api/Area/Cities";
 
 
 

@@ -22,7 +22,7 @@
 <!-- app style -->
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/pagination.css" />
-
+  <!-- <script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
 </head>
 
 <body>
@@ -107,8 +107,11 @@
 
                                                         <?php 
                                                         if (isset($this->session->userdata['logged_data'])) {
-                                                      
+                                                            if ($this->session->userdata['logged_data']['type']=='seller') {
+                                                               redirect(base_url("seller/"));
+                                                            }
                                                             echo $this->session->userdata['logged_data']['username'];
+
                                                         
                                                       }else{
                                                        
@@ -175,7 +178,7 @@
 
                             <li>
 
-                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"> <i class="nav-icon  ti ti-trello"></i> <span class="nav-title">Area Master</span> <!-- <span class="nav-label label label-success">New</span> --> </a>
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"> <i class="nav-icon  ti ti-map-alt"></i> <span class="nav-title">Area Master</span> <!-- <span class="nav-label label label-success">New</span> --> </a>
                                 <ul aria-expanded="false">
                                     <li class="scoop-hasmenu">
                                         <a class="has-arrow" href="javascript: void(0);">Country</a>
@@ -206,8 +209,17 @@
                                 <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"> <i class="nav-icon  ti ti-user"></i> <span class="nav-title">Users</span> <!-- <span class="nav-label label label-success">New</span> --> </a>
                                 <ul aria-expanded="false">
                                     <li> <a href="<?php echo base_url('Customers'); ?>">Customers</a> </li>
+                                    <li> <a href="<?php echo base_url('Sellers'); ?>">Sellers</a> </li>
 
-                                    <li> <a href="widget-list.html">Seller</a> </li>
+                                   
+
+                                </ul>
+                            </li>
+                              <li>
+                                <a class="has-arrow" href="javascript:void(0)" aria-expanded="false"> <i class="nav-icon  ti ti-trello"></i> <span class="nav-title">Properties</span> <!-- <span class="nav-label label label-success">New</span> --> </a>
+                                <ul aria-expanded="false">
+                                    <li> <a href="<?php echo base_url('Admin_Properties'); ?>">List</a> </li>
+                                  
 
                                    
 
