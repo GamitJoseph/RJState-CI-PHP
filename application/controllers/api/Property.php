@@ -63,5 +63,24 @@ class Property extends REST_Controller {
      ], REST_Controller::HTTP_OK);
    }
 
+   public function AllRentProperties_get($id){
+      echo $id;
+      $data["detail"]=$this->Property_model->getRentProperteis();
+         $this->response([
+         'status' => TRUE,
+         'message' => 'successfully get',
+         'data' => $data
+     ], REST_Controller::HTTP_OK);
+   }
+   public function AllSaleProperties_get($id){
+      echo $id;
+      $data["detail"]=$this->Property_model->getSaleProperteis();
+         $this->response([
+         'status' => TRUE,
+         'message' => 'successfully get',
+         'data' => $data
+     ], REST_Controller::HTTP_OK);
+   }
+
 
 }
