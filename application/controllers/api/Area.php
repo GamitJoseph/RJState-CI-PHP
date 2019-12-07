@@ -49,7 +49,7 @@ class Area extends REST_Controller {
 		} else {
                 // Set the response and exit
                 //BAD_REQUEST (400) being the HTTP response code
-			$this->response(['status'=>FALSE,'message'=>"no data found."], REST_Controller::HTTP_BAD_REQUEST);
+			$this->response(['status'=>FALSE,'message'=>"no data found."], REST_Controller::HTTP_OK);
 		}  
 	}
 
@@ -78,7 +78,7 @@ class Area extends REST_Controller {
 			} else {
                 // Set the response and exit
                 //BAD_REQUEST (400) being the HTTP response code
-				$this->response(['status'=>FALSE,'message'=>"no data found."], REST_Controller::HTTP_BAD_REQUEST);
+				$this->response(['status'=>FALSE,'message'=>"no data found."], REST_Controller::HTTP_OK);
 			}  
 
 
@@ -87,7 +87,7 @@ class Area extends REST_Controller {
 			$this->response([
 				'status' => FALSE,
 				'message' => "country id is null"  
-			], REST_Controller::HTTP_BAD_REQUEST);
+			], REST_Controller::HTTP_OK);
 		}
 	}
 
@@ -115,7 +115,7 @@ class Area extends REST_Controller {
 			} else {
                 // Set the response and exit
                 //BAD_REQUEST (400) being the HTTP response code
-				$this->response(['status'=>FALSE,'message'=>"no data found."], REST_Controller::HTTP_BAD_REQUEST);
+				$this->response(['status'=>FALSE,'message'=>"no data found."], REST_Controller::HTTP_OK);
 			}  
 
 
@@ -124,7 +124,7 @@ class Area extends REST_Controller {
 			$this->response([
 				'status' => FALSE,
 				'message' => "state id is null"  
-			], REST_Controller::HTTP_BAD_REQUEST);
+			], REST_Controller::HTTP_OK);
 		}
 	}
 

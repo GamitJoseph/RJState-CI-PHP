@@ -74,6 +74,7 @@ $route['InquiryList']['get'] = "Customer/list_city";
 $route['VisitList']['get'] = "Customer/list_city";
 
 
+
 $route['Customers']['get'] = "user/get_customers";
 $route['Customers/(:any)']['get'] = "user/get_customers/$1";
 $route['Customer_full/(:any)']['get'] = "user/full_customer/$1";
@@ -95,6 +96,7 @@ $route['is_verify_cust/(:any)/(:any)']['get'] = "user/verify_cust/$1/$2";
  $route['RJSellerHome']= "Seller/index";
  $route['add_Properties']= "Seller/addprop";
  $route['list_Properties']= "Seller/index";
+ $route['list_Properties/(:any)']= "Seller/index/$1";
  $route['moreDetail/(:any)']['get'] = "Seller/moreDetail/$1";
  $route['seller_register']= "User/registerseller";
 //commen

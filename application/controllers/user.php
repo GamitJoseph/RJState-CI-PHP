@@ -15,9 +15,9 @@ class user extends CI_Controller {
 	{
 		if (isset($this->session->userdata['logged_data'])) {
 
-			if ($this->session->userdata['logged_data']['type']==1) {
+			if ($this->session->userdata['logged_data']['type']=="admin") {
 				redirect(base_url('RJHome'));
-			}elseif ($this->session->userdata['logged_data']['type']==2) {
+			}elseif ($this->session->userdata['logged_data']['type']=="seller") {
 				redirect(base_url('RJSellerHome'));
 			}else{
 				$this->load->view('login.php');
@@ -32,13 +32,15 @@ class user extends CI_Controller {
 	public function login()
 	{
 		
+		if (isset($this->session->userdata['logged_data'])) {
+			
 
-		if ($this->session->userdata['logged_data']['type']=='admin') {
-			redirect(base_url('RJHome'));
-		}elseif ($this->session->userdata['logged_data']['type']=='seller') {
-			redirect(base_url('RJSellerHome'));
+			if ($this->session->userdata['logged_data']['type']=='admin') {
+				redirect(base_url('RJHome'));
+			}elseif ($this->session->userdata['logged_data']['type']=='seller') {
+				redirect(base_url('RJSellerHome'));
+			}
 		}
-
 		$this->form_validation->set_rules('username', 'Username', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		

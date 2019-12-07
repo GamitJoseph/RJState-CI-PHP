@@ -22,7 +22,7 @@ function __construct()
     $rowsCount = $this->property_model->getProperty($conditions);
 
       // Pagination config
-    $config['base_url']    = base_url() . '/seller/';
+    $config['base_url']    = base_url() . '/Seller/';
     $config['uri_segment'] = 2;
     $config['total_rows']  = $rowsCount;
     $config['per_page']    = $this->perPage;
@@ -47,7 +47,7 @@ function __construct()
 
     $data['list']=$this->property_model->getProperty($conditions);
     
-    $this->load_view($data,"property List","Seller/index");
+    $this->load_view($data,"property List","seller/index");
     
 
 
@@ -79,7 +79,7 @@ function __construct()
     $data["addr"]=$this->address_model->getAddrById($addr_id);
 
     
-     $this->load_view($data,"property List","Seller/property_detail");
+     $this->load_view($data,"property List","seller/property_detail");
     
     }
 
