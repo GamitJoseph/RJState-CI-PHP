@@ -219,5 +219,24 @@ public function PropertyLisRent(){
    $query=$this->db->get();
     return $query->result();
 }
+
+public function addFurnishDetail($data){
+    $this->db->insert('rj_furnishing_detail',$data);
+}
+public function addFlooringDetail($data){
+    $this->db->insert('rj_flooring',$data);
+}
+public function addAmentie($data){
+    $this->db->insert('rj_amentiestbl',$data);
+}
+public function addFeature($data){
+    $this->db->insert('rj_feature_master',$data);
+}
+public function createAlbum($data){
+    $this->db->insert('rj_albums',$data);
+}
+public function addImages($data){
+    $this->db->insert('rj_images',$data);
+}
 }   
 ?>
