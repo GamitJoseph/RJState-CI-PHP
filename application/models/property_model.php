@@ -184,5 +184,40 @@ class property_model extends CI_Model {
    // $query=$this->db->query("select * from rj_property_master where propertym_id='$id'");
     return $query->result();
   }
+
+public function getFistImage($alb_id){
+    $this->db->where('album_id',$alb_id);
+    $query=$this->db->get('rj_images',1,0);
+    return $query->result();
+}
+public function PropertyListSale(){
+  
+    $this->db->select("rj_property_master.propertym_id,rj_property_master.property_title,rj_property_master.description,rjcity.city_name,rj_price_detail.total_amt");
+    $this->db->from('rj_property_master');
+    $this->db->join('rj_addr_detail',"rj_addr_detail.addr_detail_id=rj_property_master.addr_detail_id","left");
+        $this->db->join('rjcity', 'rjcity.city_id = rj_addr_detail.city_id',"left");
+        $this->db->join('rjstate', 'rjstate.state_id = rj_addr_detail.state_id',"left");
+        $this->db->join('rjcountry', 'rjcountry.country_id = rj_addr_detail.country_id',"left");
+    $this->db->join('rj_price_detail',"rj_price_detail.price_detail_id=rj_property_master.price_detail_id","left");
+    $this->db->join('rj_albums',"rj_albums.album_id=rj_property_master.album_id","left");
+    //$this->db->join('rj_images',"rj_albums.album_id=rj_images.album_id","left");
+    $query=$this->db->where('rj_property_master.type',"sale");
+    $query=$this->db->get();
+       return $query->result();
+}
+public function PropertyLisRent(){
+    $this->db->select("rj_property_master.propertym_id,rj_property_master.property_title,rj_property_master.description,rjcity.city_name,rj_price_detail.total_amt");
+    $this->db->from('rj_property_master');
+    $this->db->join('rj_addr_detail',"rj_addr_detail.addr_detail_id=rj_property_master.addr_detail_id","left");
+        $this->db->join('rjcity', 'rjcity.city_id = rj_addr_detail.city_id',"left");
+        $this->db->join('rjstate', 'rjstate.state_id = rj_addr_detail.state_id',"left");
+        $this->db->join('rjcountry', 'rjcountry.country_id = rj_addr_detail.country_id',"left");
+    $this->db->join('rj_price_detail',"rj_price_detail.price_detail_id=rj_property_master.price_detail_id","left");
+    $this->db->join('rj_albums',"rj_albums.album_id=rj_property_master.album_id","left");
+        //$this->db->join('rj_images',"rj_albums.album_id=rj_images.album_id","left");
+    $this->db->where('rj_property_master.type',"rent");
+   $query=$this->db->get();
+    return $query->result();
+}
 }   
 ?>

@@ -46,4 +46,49 @@ class Property extends REST_Controller {
          'data' => $data
      ], REST_Controller::HTTP_OK);
    }
+ public function PropertyListSale_get(){
+      $data=$this->Property_model->PropertyListSale();
+      $d[0]="";
+      $i=0;
+      foreach($data as $row){
+         $n['row']=$row;
+         $res=$this->Property_model->getFistImage($row->album_id);
+         if($res!=null){
+             $n['img']=$res[0]->image_url;
+          }
+          else{
+             $n['img']="";
+          }
+         $d[$i]=$n;
+        $i++; 
+      }
+      $this->response([
+         'status' => TRUE,
+         'message' => 'successfully get',
+         'data' => $d
+     ], REST_Controller::HTTP_OK);
+   }
+   public function PropertyLisRent_get(){
+      $d[0]="";
+      $data=$this->Property_model->PropertyLisRent();
+      $i=0;
+      foreach($data as $row){
+         $n['row']=$row;
+         $res=$this->Property_model->getFistImage($row->album_id);
+         if($res!=null){
+            $n['img']=$res[0]->image_url;
+         }
+         else{
+            $n['img']="";
+         }
+         $d[$i]=n;
+        $i++; 
+      }
+      $this->response([
+         'status' => TRUE,
+         'message' => 'successfully get',
+         'data' => $d
+     ], REST_Controller::HTTP_OK);
+      
+   }
 }
